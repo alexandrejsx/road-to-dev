@@ -1,0 +1,30 @@
+packages:
+  - apps/*
+  - packages/*
+
+strictPeerDependencies: true
+
+allowBuilds:
+  '@nestjs/core': false
+  '@scarf/scarf': false
+  '@swc/core': true
+  esbuild: true
+  msgpackr-extract: true
+  sharp: true
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - '@tanstack/query-core@5.104.1'
+  - '@tanstack/react-query@5.104.1'
+  - '@turbo/darwin-64@2.11.7'
+  - '@turbo/darwin-arm64@2.11.7'
+  - '@turbo/linux-64@2.11.7'
+  - '@turbo/linux-arm64@2.11.7'
+  - '@turbo/windows-64@2.11.7'
+  - '@turbo/windows-arm64@2.11.7'
+  - framer-motion@14.0.0
+  - mongoose@9.10.4
+  - motion-dom@14.0.0
+  - motion-utils@14.0.0
+  - motion@14.0.0
+  - turbo@2.11.7
