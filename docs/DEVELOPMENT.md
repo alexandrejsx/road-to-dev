@@ -27,7 +27,7 @@ O Turborepo prepara os packages necessários e inicia:
 | Swagger, somente em desenvolvimento      | http://localhost:3001/docs      |
 | OpenAPI JSON, somente em desenvolvimento | http://localhost:3001/docs-json |
 
-O frontend exibe apenas uma confirmação de funcionamento. O health check retorna `{"status":"ok"}` e não verifica dependências externas.
+O frontend abre o mapa local em `http://localhost:3000/mapa/inicial`; a raiz redireciona para essa rota. A exploração utiliza fixtures demonstrativas, sem persistência ou concessão de recompensas. O health check retorna `{"status":"ok"}` e não verifica dependências externas.
 
 Para executar separadamente:
 
@@ -57,11 +57,11 @@ pnpm format
 
 - `lint`: ESLint com configuração compartilhada e zero avisos permitidos.
 - `typecheck`: TypeScript strict; o frontend gera os tipos do App Router antes da checagem, inclusive em um checkout novo.
-- `test`: Vitest, com um smoke test HTTP da API. Web, contracts e UI estão preparados para testes e aceitam a ausência deles nesta etapa. O Vitest do frontend cobre código sem DOM; testes de componentes precisarão de ambiente e utilitários próprios quando forem necessários.
+- `test`: Vitest, com um smoke test HTTP da API e testes dos pré-requisitos da fixture do mapa (níveis mínimos, dependências entre categorias e integridade do grafo), além dos limites da câmera (pan/zoom, regiões medidas, telas maiores que o mundo e resize). Contracts e UI aceitam a ausência de testes nesta etapa.
 - `build`: compila contracts e API em `dist/`, e o frontend em `.next/`. UI é consumida como código-fonte pelo Next e verificada por `typecheck`.
 - `format:check` / `format`: verificam/aplicam Prettier. O `README.md` de produto é preservado.
 
-Teste E2E mínimo do frontend:
+Testes E2E do frontend (seleção, bloqueios, demonstração, teclado, limites de pan/zoom, roda, pinch/toque, rolagem independente e drawer móvel):
 
 ```bash
 pnpm --filter @road-to-dev/web exec playwright install chromium
@@ -81,11 +81,11 @@ pnpm --filter @road-to-dev/api start
 
 ```text
 apps/
-  web/                    Next.js, App Router e smoke test Playwright
+  web/                    Next.js, mapa local e testes Playwright
   api/                    NestJS, health check, Swagger e smoke test Vitest
 packages/
   contracts/              export central, sem contratos de domínio
-  ui/                     suporte mínimo a componentes visuais compartilhados
+  ui/                     componentes, tokens e emblemas compartilhados
   eslint-config/          configurações flat compartilhadas
   typescript-config/      base strict e configurações por ambiente
 docs/
@@ -95,9 +95,13 @@ AGENTS.md                 contexto e limites arquiteturais
 
 Todos os packages são privados e usam o namespace `@road-to-dev`. `contracts` utiliza ESM compilado; o Turborepo o compila antes das aplicações e o observa durante `pnpm dev`. UI expõe fontes TypeScript, transpiladas pelo Next. Imports relativos na API e em contracts devem usar extensão `.js` para resolução NodeNext.
 
-TanStack Query, Zustand, React Flow e Motion estão instalados no frontend. Radix UI e os utilitários de classes estão no package UI. Nenhum provider, store ou componente de domínio foi antecipado.
+React Flow organiza o canvas e Motion informa a preferência por movimento reduzido; transições visuais usam CSS. TanStack Query e Zustand permanecem disponíveis para necessidades futuras: esta tela não faz fetches e usa estado local para seleção e atividade aberta. Radix UI, controles visuais e tokens compartilhados ficam no package UI.
 
-Os arquivos `components.json`, os aliases, `cn`, a exportação de fontes de UI e a leitura de classes pelo Tailwind preparam o uso futuro de [shadcn/ui em monorepo](https://ui.shadcn.com/docs/monorepo). Antes do primeiro componente, defina/inicialize o tema e seus tokens em `packages/ui/src/styles/globals.css`; os valores do gerador ainda não representam um design definitivo. Crie componentes a partir de `apps/web` e mantenha os dois `components.json` consistentes.
+Os arquivos `components.json`, os aliases, `cn`, a exportação de fontes de UI e a leitura de classes pelo Tailwind preparam o uso de [shadcn/ui em monorepo](https://ui.shadcn.com/docs/monorepo). Os ícones funcionais usam `lucide-react` pelo componente compartilhado `Icon`. O tema Observatório do RTD está centralizado em `packages/ui/src/styles/globals.css`. Consulte `design.md` antes de alterar componentes ou tokens e mantenha os dois `components.json` consistentes.
+
+O mapa está organizado em `apps/web/src/features/skill-map`: `fixtures/skills.ts` define conteúdo demonstrativo, `fixtures/progress.ts` contém o snapshot de progresso e saldos, `fixtures/availability.ts` avalia apenas esse exemplo e `layout.ts` define as posições. A disponibilidade definitiva deverá vir da API. `packages/contracts` permanece reservado aos contratos públicos quando a integração for definida.
+
+Os emblemas de `packages/ui/src/lib/pixel-assets.ts` são SVGs originais provisórios em grade 24 × 24, renderizados por `PixelIcon`. O registro documenta origem, licença, finalidade e tamanho. Substitua os assets nesse registro quando os emblemas finais forem aprovados.
 
 Mongoose, a integração Nest/Mongoose, ioredis, BullMQ e a integração Nest/BullMQ estão apenas instalados. Não existem conexões, schemas, filas ou workers. Novas regras de negócio pertencem ao backend; contratos públicos podem ser compartilhados, comportamento de domínio não.
 

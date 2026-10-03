@@ -2,3 +2,183 @@
 
 @source '../';
 @source '../../../../apps/web/src';
+
+:root {
+  color-scheme: dark;
+  --rtd-background: #0f1420;
+  --rtd-header: #141b28;
+  --rtd-surface: #1d2735;
+  --rtd-surface-elevated: #253244;
+  --rtd-surface-hover: #2b3a4f;
+  --rtd-border: #34445b;
+  --rtd-border-interactive: #70839f;
+  --rtd-text: #e8edf5;
+  --rtd-text-muted: #a6b0c0;
+  --rtd-primary: #e1b17d;
+  --rtd-primary-hover: #edc393;
+  --rtd-primary-foreground: #101722;
+  --rtd-gold: #9a855e;
+  --rtd-gold-strong: #d8bc83;
+  --rtd-focus: #b7a8e8;
+  --rtd-knowledge: #94bdff;
+  --rtd-knowledge-border: #4e79b2;
+  --rtd-knowledge-surface: #17263d;
+  --rtd-strategy: #e1b17d;
+  --rtd-strategy-border: #a47b48;
+  --rtd-strategy-surface: #2b241e;
+  --rtd-creation: #86caa7;
+  --rtd-creation-border: #4e8d73;
+  --rtd-creation-surface: #172d28;
+  --rtd-success: #86caa7;
+  --rtd-warning: #e1b17d;
+  --rtd-error: #efa1a1;
+  --rtd-disabled: #8b97a8;
+  --rtd-disabled-surface: #18202b;
+  --rtd-edge-muted: #8490a0;
+  --rtd-coin: #e4bc68;
+  --rtd-shadow: 0 4px 16px rgb(0 0 0 / 16%);
+  --rtd-overlay: rgb(0 0 0 / 56%);
+  --rtd-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--rtd-background);
+  --color-foreground: var(--rtd-text);
+  --color-card: var(--rtd-surface);
+  --color-card-foreground: var(--rtd-text);
+  --color-popover: var(--rtd-surface-elevated);
+  --color-popover-foreground: var(--rtd-text);
+  --color-primary: var(--rtd-primary);
+  --color-primary-foreground: var(--rtd-primary-foreground);
+  --color-secondary: var(--rtd-surface-hover);
+  --color-secondary-foreground: var(--rtd-text);
+  --color-muted: var(--rtd-surface-hover);
+  --color-muted-foreground: var(--rtd-text-muted);
+  --color-accent: var(--rtd-surface-hover);
+  --color-accent-foreground: var(--rtd-text);
+  --color-border: var(--rtd-border);
+  --color-input: var(--rtd-border-interactive);
+  --color-ring: var(--rtd-focus);
+  --color-success: var(--rtd-success);
+  --color-destructive: var(--rtd-error);
+  --color-warning: var(--rtd-warning);
+  --color-knowledge: var(--rtd-knowledge);
+  --color-strategy: var(--rtd-strategy);
+  --color-creation: var(--rtd-creation);
+  --color-coin: var(--rtd-coin);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background: var(--rtd-background);
+    color: var(--rtd-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  a,
+  [tabindex] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--rtd-focus);
+    outline-offset: 4px;
+  }
+
+  button:not(:disabled),
+  a {
+    cursor: pointer;
+  }
+}
+
+[data-category='knowledge'] {
+  --category-color: var(--rtd-knowledge);
+  --category-border: var(--rtd-knowledge-border);
+  --category-surface: var(--rtd-knowledge-surface);
+}
+
+[data-category='strategy'] {
+  --category-color: var(--rtd-strategy);
+  --category-border: var(--rtd-strategy-border);
+  --category-surface: var(--rtd-strategy-surface);
+}
+
+[data-category='creation'] {
+  --category-color: var(--rtd-creation);
+  --category-border: var(--rtd-creation-border);
+  --category-surface: var(--rtd-creation-surface);
+}
+
+@keyframes rtd-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rtd-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.rtd-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--rtd-overlay);
+  animation: rtd-fade-in 200ms var(--rtd-ease);
+}
+
+.rtd-sheet,
+.rtd-dialog {
+  position: fixed;
+  z-index: 51;
+  background: var(--rtd-surface-elevated);
+  border: 1px solid var(--rtd-border);
+  box-shadow: var(--rtd-shadow);
+  animation: rtd-panel-in 200ms var(--rtd-ease);
+}
+
+.rtd-sheet {
+  inset: 0 0 0 auto;
+  width: min(100%, 400px);
+  display: flex;
+  flex-direction: column;
+}
+
+.rtd-dialog {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: min(480px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  padding: 32px;
+  border-radius: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

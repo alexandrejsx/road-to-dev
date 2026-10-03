@@ -408,3 +408,19 @@ The API and contracts use ESM with NodeNext resolution; relative imports use `.j
 MongoDB, Mongoose, Redis and BullMQ dependencies are prepared, but application startup must not require external services during this stage. Swagger is exposed at `/docs` only in development; `/health` checks only that the API is running.
 
 Before completing changes, run `pnpm lint`, `pnpm typecheck`, `pnpm test` and `pnpm build`. Use `pnpm test:e2e` when frontend behavior changes. Preserve the product README and keep setup instructions in `docs/DEVELOPMENT.md`.
+
+## Design de interface
+
+Antes de criar ou alterar telas, layouts, componentes visuais, estilos,
+ícones, assets ou interações de interface, leia o `design.md` da raiz
+do repositório. O design system aprovado é Observatório. Siga seus tokens,
+cores das categorias, ambientação, acessibilidade e limites do canvas.
+
+Consulte também o README para preservar as regras pedagógicas e de
+progressão. Mantenha as cores de Conhecimento, Estratégia e Criação
+consistentes e reutilize os componentes e tokens compartilhados.
+
+Quando uma decisão visual nova for explicitamente aprovada, atualize
+o `design.md` junto com a implementação. Se houver conflito entre uma
+imagem de referência e uma instrução textual mais recente do usuário,
+aplique a instrução textual e registre a decisão no documento.
