@@ -24,6 +24,7 @@ export function AppHeader({ xp, coins }: { xp: string; coins: string }) {
           <button
             type="button"
             aria-disabled="true"
+            aria-label="Quests — Em breve"
             className="nav-link unavailable"
           >
             Quests<span>Em breve</span>
@@ -33,6 +34,7 @@ export function AppHeader({ xp, coins }: { xp: string; coins: string }) {
           <button
             type="button"
             aria-disabled="true"
+            aria-label="Personagem — Em breve"
             className="nav-link unavailable"
           >
             Personagem<span>Em breve</span>

@@ -1,10 +1,10 @@
-# RTD — Design system Observatório
+# RTD — Design system Observatório diurno
 
-Direção aprovada: Observatório, proposta dark escolhida em 03/10/2026. Este documento é a referência visual para telas e componentes do Road to Dev e substitui a paleta clara anterior. Deve ser consultado antes de criar ou alterar interfaces. O README continua sendo a referência das regras pedagógicas e da progressão.
+Direção atual: **Observatório diurno**, proposta clara escolhida em 04/10/2026 após a exploração da versão escura. Este documento é a referência visual para telas e componentes do Road to Dev e substitui as instruções de tema escuro anteriores. Deve ser consultado antes de criar ou alterar interfaces. O README continua sendo a referência das regras pedagógicas e da progressão.
 
 ## 1. Direção visual
 
-Interface moderna, dark, inteiramente 2D, com bastante espaço e detalhes em pixel art. O Observatório transmite descoberta, orientação e construção de conhecimento: azul noturno, ardósia, pequenos instrumentos e símbolos astronômicos nas margens. A identidade de RPG aparece nos símbolos, mundos, personagens, roupas, equipamentos e conquistas.
+Interface moderna, clara e inteiramente 2D, com bastante espaço e detalhes em pixel art. O Observatório diurno transmite descoberta, orientação e construção de conhecimento: marfim claro, tinta azul profunda, latão discreto e símbolos astronômicos nas margens. A identidade de RPG aparece nos símbolos, mundos, personagens, roupas, equipamentos e conquistas.
 
 Texto, botões, painéis, caminhos e superfícies usam acabamento moderno. Sprites e emblemas usam pixel art consistente. O conteúdo educacional e as três categorias de competências têm prioridade visual.
 
@@ -16,7 +16,7 @@ A ambientação varia por contexto: presente e discreta nos mapas; moderada em q
 
 ## 2. Base técnica
 
-Setup recomendado recentemente: monorepo pnpm/Turborepo; frontend em `apps/web` com Next.js, React, TypeScript e App Router; API NestJS em `apps/api`; Tailwind CSS, shadcn/ui + Radix, TanStack Query, Zustand, React Flow e Motion. Reutilizar os packages compartilhados de UI, contratos e configuração que já existirem.
+Setup confirmado nos manifests e no lockfile: pnpm 12.8.1 / Turborepo 2.11.7; frontend em `apps/web` com Next.js 16.3.8, React 19.3.0, TypeScript 6.0.3 e App Router; API NestJS 12.1.2 em `apps/api`. Tailwind CSS 4.3.3, Radix UI 1.6.7, React Flow 12.12.0, TanStack Query 5.104.1, Zustand 5.0.15 e Motion 14.0.0 estão instalados. O package `packages/ui` reúne os componentes compatíveis com as convenções shadcn, tokens e registros de ícones; reutilizar também os packages de contratos e configuração.
 
 O agente deve conferir os manifests, o lockfile, os componentes e as instruções do repositório antes de implementar. O código existente é a autoridade sobre versões e organização. Não migrar framework ou recriar o setup para executar uma tarefa de interface.
 
@@ -24,51 +24,51 @@ O grafo interativo e o painel são componentes cliente. Preservar as fronteiras 
 
 ## 3. Paleta e tokens
 
-Usar tokens semânticos, compartilhados quando o monorepo já tiver uma estrutura para isso. Os valores abaixo são a proposta concreta derivada da direção aprovada, não uma extração exata dos pixels da imagem.
+Usar tokens semânticos, compartilhados quando o monorepo já tiver uma estrutura para isso. Os valores abaixo aproximam a imagem escolhida e dão contraste aos textos e controles; não são uma extração literal dos pixels do sketch.
 
 ### Superfícies e texto
 
-| Token                      | Valor     | Aplicação                            |
-| -------------------------- | --------- | ------------------------------------ |
-| `--rtd-background`         | `#0F1420` | Fundo geral e canvas azul noturno    |
-| `--rtd-header`             | `#141B28` | Header                               |
-| `--rtd-surface`            | `#1D2735` | Nós, cards e painéis                 |
-| `--rtd-surface-elevated`   | `#253244` | Drawer, menus e superfícies elevadas |
-| `--rtd-surface-hover`      | `#2B3A4F` | Hover em superfícies neutras         |
-| `--rtd-border`             | `#34445B` | Bordas e divisores discretos         |
-| `--rtd-border-interactive` | `#70839F` | Contorno funcional mais presente     |
-| `--rtd-text`               | `#E8EDF5` | Texto principal                      |
-| `--rtd-text-muted`         | `#A6B0C0` | Texto secundário                     |
-| `--rtd-primary`            | `#E1B17D` | CTA global, com texto escuro         |
-| `--rtd-primary-hover`      | `#EDC393` | Hover da ação principal              |
-| `--rtd-primary-foreground` | `#101722` | Texto sobre ação principal           |
-| `--rtd-gold`               | `#9A855E` | Ornamentos e microacentos            |
-| `--rtd-gold-strong`        | `#D8BC83` | Navegação ativa e ouro legível       |
-| `--rtd-focus`              | `#B7A8E8` | Foco visível, separado da seleção    |
+| Token                      | Valor     | Aplicação                                      |
+| -------------------------- | --------- | ---------------------------------------------- |
+| `--rtd-background`         | `#FAF9F5` | Fundo geral e canvas marfim                    |
+| `--rtd-header`             | `#FFFEFC` | Header claro                                   |
+| `--rtd-surface`            | `#FFFFFF` | Nós, cards e painéis                           |
+| `--rtd-surface-elevated`   | `#FFFEFC` | Drawer, menus e superfícies elevadas           |
+| `--rtd-surface-hover`      | `#F1F4F5` | Hover em superfícies neutras                   |
+| `--rtd-border`             | `#D9DFE3` | Bordas e divisores discretos                   |
+| `--rtd-border-interactive` | `#8D9CAB` | Contorno funcional mais presente               |
+| `--rtd-text`               | `#17253D` | Texto principal azul profundo                  |
+| `--rtd-text-muted`         | `#536579` | Texto secundário                               |
+| `--rtd-primary`            | `#244B76` | CTA global                                     |
+| `--rtd-primary-hover`      | `#193B61` | Hover da ação principal                        |
+| `--rtd-primary-foreground` | `#FFFFFF` | Texto sobre ação principal                     |
+| `--rtd-gold`               | `#B08443` | Linha de navegação ativa e microacentos        |
+| `--rtd-gold-soft`          | `#D8C19D` | Arcos e marcas astronômicas de baixo contraste |
+| `--rtd-focus`              | `#6959AD` | Foco visível, separado da seleção              |
 
 ### Categorias
 
 | Categoria    | Texto/ênfase | Contorno  | Fundo suave | Emblema                 |
 | ------------ | ------------ | --------- | ----------- | ----------------------- |
-| Conhecimento | `#94BDFF`    | `#4E79B2` | `#17263D`   | Livro azul              |
-| Estratégia   | `#E1B17D`    | `#A47B48` | `#2B241E`   | Bússola em cobre/âmbar  |
-| Criação      | `#86CAA7`    | `#4E8D73` | `#172D28`   | Terminal/notebook verde |
+| Conhecimento | `#245A9D`    | `#79A9DC` | `#EDF5FD`   | Livro azul              |
+| Estratégia   | `#A64F1A`    | `#DBA06B` | `#FFF4E9`   | Bússola em cobre        |
+| Criação      | `#1F664A`    | `#87B69A` | `#EEF8F1`   | Terminal/notebook verde |
 
 Tokens por categoria: `--rtd-knowledge`, `--rtd-knowledge-border`, `--rtd-knowledge-surface`; equivalentes `strategy` e `creation`.
 
-Essas associações valem em toda a aplicação. A categoria é indicada por cor, texto e símbolo; não apenas pela cor. Pigmentos secundários dentro de um sprite podem variar, mas seu contêiner e identificação seguem a categoria. O ouro decorativo não é cor de leitura e não deve pintar todas as competências. O CTA global conserva o mesmo tratamento; a categoria de conteúdo aparece em seu emblema, badge, título e borda.
+Essas associações valem em toda a aplicação. A categoria é indicada por cor, texto e símbolo; não apenas pela cor. Pigmentos secundários dentro de um sprite podem variar, mas seu contêiner e identificação seguem a categoria. O latão decorativo não é cor de leitura e não deve pintar todas as competências. O CTA global conserva o mesmo tratamento azul profundo; a categoria de conteúdo aparece em seu emblema, badge, título e borda.
 
 ### Estados e conexões
 
 | Token                    | Valor     | Aplicação                                |
 | ------------------------ | --------- | ---------------------------------------- |
-| `--rtd-success`          | `#86CAA7` | Pequeno check de requisito atendido      |
-| `--rtd-warning`          | `#E1B17D` | Aviso contextual                         |
-| `--rtd-error`            | `#EFA1A1` | Erro de atividade/validação              |
-| `--rtd-disabled`         | `#8B97A8` | Indicadores e texto indisponível legível |
-| `--rtd-disabled-surface` | `#18202B` | Superfície indisponível                  |
-| `--rtd-edge-muted`       | `#8490A0` | Conexão futura/sem destaque              |
-| `--rtd-coin`             | `#E4BC68` | Detalhe dourado da moeda                 |
+| `--rtd-success`          | `#28764E` | Pequeno check de requisito atendido      |
+| `--rtd-warning`          | `#A64F1A` | Aviso contextual                         |
+| `--rtd-error`            | `#AC3743` | Erro de atividade/validação              |
+| `--rtd-disabled`         | `#5D6B7A` | Indicadores e texto indisponível legível |
+| `--rtd-disabled-surface` | `#F2F2EF` | Superfície indisponível                  |
+| `--rtd-edge-muted`       | `#78899A` | Conexão futura/sem destaque              |
+| `--rtd-coin`             | `#C18A25` | Detalhe dourado da moeda                 |
 
 Não aplicar opacidade baixa ao texto de nós bloqueados a ponto de prejudicar a leitura. O check de progresso não transforma um nó de Conhecimento em um nó verde.
 
@@ -76,48 +76,51 @@ Não aplicar opacidade baixa ao texto de nós bloqueados a ponto de prejudicar a
 
 ```css
 :root {
-  color-scheme: dark;
-  --rtd-background: #0f1420;
-  --rtd-header: #141b28;
-  --rtd-surface: #1d2735;
-  --rtd-surface-elevated: #253244;
-  --rtd-surface-hover: #2b3a4f;
-  --rtd-border: #34445b;
-  --rtd-border-interactive: #70839f;
-  --rtd-text: #e8edf5;
-  --rtd-text-muted: #a6b0c0;
-  --rtd-primary: #e1b17d;
-  --rtd-primary-hover: #edc393;
-  --rtd-primary-foreground: #101722;
-  --rtd-gold: #9a855e;
-  --rtd-gold-strong: #d8bc83;
-  --rtd-focus: #b7a8e8;
-  --rtd-knowledge: #94bdff;
-  --rtd-knowledge-border: #4e79b2;
-  --rtd-knowledge-surface: #17263d;
-  --rtd-strategy: #e1b17d;
-  --rtd-strategy-border: #a47b48;
-  --rtd-strategy-surface: #2b241e;
-  --rtd-creation: #86caa7;
-  --rtd-creation-border: #4e8d73;
-  --rtd-creation-surface: #172d28;
-  --rtd-success: #86caa7;
-  --rtd-warning: #e1b17d;
-  --rtd-error: #efa1a1;
-  --rtd-disabled: #8b97a8;
-  --rtd-disabled-surface: #18202b;
-  --rtd-edge-muted: #8490a0;
-  --rtd-coin: #e4bc68;
+  color-scheme: light;
+  --rtd-background: #faf9f5;
+  --rtd-header: #fffefc;
+  --rtd-surface: #ffffff;
+  --rtd-surface-elevated: #fffefc;
+  --rtd-surface-hover: #f1f4f5;
+  --rtd-border: #d9dfe3;
+  --rtd-border-interactive: #8d9cab;
+  --rtd-text: #17253d;
+  --rtd-text-muted: #536579;
+  --rtd-primary: #244b76;
+  --rtd-primary-hover: #193b61;
+  --rtd-primary-foreground: #ffffff;
+  --rtd-gold: #b08443;
+  --rtd-gold-soft: #d8c19d;
+  --rtd-focus: #6959ad;
+  --rtd-knowledge: #245a9d;
+  --rtd-knowledge-border: #79a9dc;
+  --rtd-knowledge-surface: #edf5fd;
+  --rtd-strategy: #a64f1a;
+  --rtd-strategy-border: #dba06b;
+  --rtd-strategy-surface: #fff4e9;
+  --rtd-creation: #1f664a;
+  --rtd-creation-border: #87b69a;
+  --rtd-creation-surface: #eef8f1;
+  --rtd-success: #28764e;
+  --rtd-warning: #a64f1a;
+  --rtd-error: #ac3743;
+  --rtd-disabled: #5d6b7a;
+  --rtd-disabled-surface: #f2f2ef;
+  --rtd-edge-muted: #78899a;
+  --rtd-coin: #c18a25;
 }
 ```
 
 Integrar à versão de Tailwind e ao tema shadcn já instalados, incluindo menus, tooltips e drawers. Se houver escopo/provider de tema, usar a estrutura existente. Centralizar o mapeamento de tokens; evitar valores de cor repetidos nos componentes. Os fundos são preenchimentos sólidos, não gradientes. Não é necessário criar um seletor de temas nesta entrega.
 
+Implementação: `packages/ui/src/styles/globals.css` declara os tokens no `:root` e os mapeia para Tailwind via `@theme inline`. `color-scheme: light` cobre também os portais Radix; React Flow usa `colorMode="light"`. Tooltips e diálogos reutilizam `popover`, superfícies elevadas e o mesmo foco. A sombra compartilhada usa tinta azul a 8% e o overlay a 24%, sem reaproveitar a opacidade pesada do tema anterior. O painel desktop é branco; o drawer e seu rodapé usam a superfície elevada clara.
+
 ## 4. Tipografia e geometria
 
-- Reutilizar a fonte sans-serif do setup. Geist, Inter ou a fonte de sistema são compatíveis com a direção; não adicionar outra fonte se a existente funcionar.
-- Texto de interface: 14–16 px; nomes de skills: 14–16 px, peso 600; headings das categorias: 24–28 px no desktop; título do painel: 22–26 px.
-- `RTD`: 22–26 px, peso 700. Não usar fonte pixelada no texto da marca ou na interface.
+- Usar a sans-serif do setup em navegação, descrições, status, requisitos e controles. A imagem usa uma serif editorial contida em `RTD`, categorias e títulos curtos de skill/painel; aplicar uma fonte já existente quando houver ou um fallback de sistema como `ui-serif, Georgia, serif`. Não adicionar fonte de rede só para reproduzir o sketch.
+- O token compartilhado `--rtd-font-editorial` aplica esse fallback à marca, headings das categorias, nomes dos nós e título do painel. O restante conserva a sans-serif do Tailwind.
+- Texto de interface: 14–16 px; nomes de skills: 15–16 px, peso 600; headings das categorias: 24–28 px no desktop; título do painel: 22–26 px.
+- `RTD`: 24–28 px, peso 700. Não usar fonte pixelada no texto da marca ou na interface.
 - Escala de espaço: 4, 8, 12, 16, 24, 32 e 48 px.
 - Raios: 10–12 px em nós e controles; 14–16 px em painéis e regiões; pills apenas para badges curtos.
 - Bordas comuns: 1 px; seleção de nó: 2 px. Sombras discretas, reservadas ao painel elevado e à seleção.
@@ -129,7 +132,7 @@ Header horizontal, cerca de 72 px no desktop, com fundo `--rtd-header` e borda d
 
 - À esquerda: somente `RTD` como marca textual. Não adicionar o emblema de bússola nem criar uma logo agora.
 - Navegação: `Mapa`, `Quests`, `Personagem`. Nunca usar `Mundos` como nome dessa aba.
-- `Mapa` aparece ativo na tela local e na tela global. Usar texto claro e sublinhado fino em ouro forte; aplicar `aria-current` quando houver um link ativo.
+- `Mapa` aparece ativo na tela local e na tela global. Usar texto azul profundo e sublinhado fino `--rtd-gold`; aplicar `aria-current` quando houver um link ativo.
 - À direita: XP e moeda separados visualmente. Exemplo de fixture: `1.280 XP` e ícone de moeda com `240`.
 - Usar ícones funcionais discretos quando úteis; o texto das abas permanece legível.
 - Integrar com rotas existentes. Não usar `href="#"` nem apresentar ações mortas como se funcionassem. Destinos ainda ausentes devem ter estado indisponível claro, sem implementar outras telas nesta tarefa.
@@ -149,7 +152,7 @@ No desktop, o canvas ocupa toda a área disponível quando não há seleção. A
 
 ### As três categorias
 
-Organizar o grafo em três regiões reconhecíveis: Conhecimento à esquerda, Estratégia ao centro e Criação à direita. Cada região tem fundo sólido escuro da categoria, borda fina, heading visível e emblema em pixel de 48–64 px. Usar apenas o nome da categoria no heading; não acrescentar slogans. Preservar a disposição funcional já implementada.
+Organizar o grafo em três regiões reconhecíveis: Conhecimento à esquerda, Estratégia ao centro e Criação à direita. Cada região tem fundo claro suave da categoria, borda muito discreta, heading visível e emblema em pixel de 48–64 px. Usar apenas o nome da categoria no heading; não acrescentar slogans. Preservar a disposição funcional já implementada.
 
 Essas regiões orientam a leitura, mas não impõem uma sequência pedagógica única. Skills podem ter dependências internas, dependências entre categorias e pontos de entrada independentes. As conexões podem atravessar regiões.
 
@@ -165,7 +168,7 @@ Estados visuais:
 
 | Estado             | Tratamento                                                                                |
 | ------------------ | ----------------------------------------------------------------------------------------- |
-| Disponível         | Superfície escura, borda da categoria e indicador discreto                                |
+| Disponível         | Superfície branca, borda da categoria e indicador discreto                                |
 | Em desenvolvimento | Borda da categoria mais presente e progresso/status acessível                             |
 | Meta atingida      | Pequeno check; identidade da categoria preservada                                         |
 | Bloqueada          | Contorno mais suave, cadeado, texto legível; ainda selecionável para consultar requisitos |
@@ -179,15 +182,17 @@ Seleção é um estado de interface; não muda o progresso educacional. A skill 
 - Toda seta representa uma dependência real, do pré-requisito para a skill dependente.
 - Posicionar nós para minimizar cruzamentos e reservar corredores para os caminhos.
 - Caminhos passam pelo espaço entre nós; nunca atravessam nomes, ícones ou contêineres.
-- Conexões relacionadas à skill selecionada recebem destaque; as demais continuam legíveis.
+- Conexões que chegam à skill selecionada e que partem dela recebem destaque; as demais continuam legíveis. Arestas atendidas usam a cor de ênfase da categoria de origem, com opacidade de 85%, para manter contraste no tema claro; destaque usa 100% e traço mais espesso. Arestas pendentes usam `--rtd-edge-muted` a 100% e tracejado, mantendo contraste de pelo menos 3:1 sobre as regiões claras.
 - Conexões atendidas podem ser sólidas; futuras/não atendidas podem ser tracejadas. Essa diferença deve corresponder aos dados.
 - Cor de uma conexão destacada segue sua origem; se várias convergirem, preservar a legibilidade e não recolorir os nós.
 - Pré-requisitos com nível mínimo devem ser avaliados por esse nível, não por simples existência da skill.
 - Não inventar linhas decorativas para preencher espaço. Não mostrar conexões de edição nem permitir ao aluno alterar dependências ou arrastar nós.
 
-O ambiente é um mapa de competências limpo. Não adicionar florestas, ilhas detalhadas, rios, montanhas, castelos ou cenários extensos atrás do grafo. O fundo Observatório tem poucos arcos de astrolábio nas margens, pequenas marcas astronômicas, estrelas esparsas e, quando couber, uma pequena constelação discreta em área vazia. O centro permanece tranquilo; ornamentos têm contraste inferior ao dos caminhos.
+O ambiente é um mapa de competências limpo. Não adicionar florestas, ilhas detalhadas, rios, montanhas, castelos ou cenários extensos atrás do grafo. O fundo Observatório diurno é marfim claro, com poucos arcos de astrolábio grandes parcialmente cortados nas margens laterais, estrelas esparsas, pequenas marcas de orientação e, quando couber, uma constelação discreta em área vazia. O miolo atrás dos três caminhos permanece tranquilo. O contraste dos ornamentos fica abaixo do contraste de conexões, bordas e texto.
 
-Uma moldura externa fina em ouro discreto, com pequenos detalhes geométricos de canto, pode enquadrar o canvas. Não repetir a moldura em todos os cards. Implementar os elementos vetoriais simples em SVG/CSS local, sem usar uma screenshot como fundo. A camada decorativa tem `aria-hidden`, não recebe foco, usa `pointer-events: none` e não participa dos cálculos de limites do grafo. Sem estrelas animadas, parallax, glow ou partículas.
+O sketch inclui pequenas coordenadas como decoração: na interface real, não mostrar números geográficos fictícios nem rótulos que pareçam dados funcionais. Usar apenas marcas gráficas abstratas ou coordenadas reais com função explicada. Uma linha muito fina em latão e pontos de orientação podem delimitar o espaço sem fechar o mapa numa moldura pesada.
+
+Implementar o fundo com SVG/CSS local, sem usar screenshot como textura. A camada pode ficar no viewport com posição fixa ao canvas ou usar coordenadas próprias decorativas, desde que não introduza parallax enganoso nem se confunda com requisitos. Ela tem `aria-hidden`, não recebe foco, usa `pointer-events: none` e não participa dos cálculos de limites do grafo. Não repetir ornamento em cada nó. Sem estrelas animadas, glow ou partículas.
 
 ### Painel contextual direito
 
@@ -202,7 +207,7 @@ Conteúdo, nesta ordem:
 5. Recompensas com XP e moeda separados; item de conquista quando houver.
 6. CTA principal contextual, como `Continuar` ou `Começar`. Para skill bloqueada, explicar o requisito e permitir explorá-lo, sem simular acesso liberado.
 
-Divisores finos e espaço entre seções. O conteúdo do painel pode rolar independentemente. O CTA deve permanecer acessível sem sobrepor a lista. Abrir uma skill não concede XP ou moedas.
+Painel em superfície branca, título azul profundo, badge da categoria, divisores finos e espaço entre seções. Não desenhar arcos e estrelas atrás do conteúdo textual. O conteúdo do painel pode rolar independentemente. O CTA deve permanecer acessível sem sobrepor a lista. Abrir uma skill não concede XP ou moedas.
 
 ### Interações e adaptação
 
@@ -217,7 +222,7 @@ Divisores finos e espaço entre seções. O conteúdo do painel pode rolar indep
 
 ### Limites do mundo e recuperação de orientação
 
-O mundo é uma área finita derivada do grafo e de suas regiões, com margem de respiro. A moldura decorativa não limita a navegação por si só.
+O mundo é uma área finita derivada do grafo e de suas regiões, com margem de respiro. Os arcos e marcas decorativos não limitam a navegação por si só.
 
 - Calcular bounds depois de medir nós e regiões, incluindo seus headings. A decoração não amplia a área navegável.
 - Usar `translateExtent` finito no React Flow ou equivalente. `nodeExtent` sozinho limita os nós, não a câmera.
@@ -229,6 +234,8 @@ O mundo é uma área finita derivada do grafo e de suas regiões, com margem de 
 - Para o mapa pequeno no desktop, preferir arraste e controles explícitos de zoom; revisar roda/trackpad para evitar pan/zoom acidental. Preservar gesto de toque/pinch e teclado conforme o dispositivo.
 - O usuário não deve conseguir deslocar todo o grafo para uma área vazia. Painéis e listas rolam sem movimentar o mapa. Revisar também altura/overflow da página.
 - No celular, aceitar uma primeira vista parcial em escala legível, com orientação e recuperação fáceis. Grandes mundos futuros usam agrupamento por regiões; não esconder a complexidade por zoom ilegível.
+
+No mapa existente, `viewport.ts` reúne os bounds medidos dos nós com os retângulos de `layout.ts`, que incluem os headings. A margem é de 32 px nas laterais, 24 px no topo (80 px com navegação compacta) e 80 px na base para os controles. `translateExtent` usa essas margens em coordenadas do mundo; o eixo menor é centralizado. O zoom deriva da área útil, preservando um piso de legibilidade de 80% e teto de 200%. A entrada e `Centralizar` enquadram o mundo até 100%; no celular, começam pela região Conhecimento em vista parcial. Resize e seleção apenas limitam a câmera/revelam o nó, preservando o zoom quando válido. Botões de categoria no modo compacto ajudam a alcançar entradas independentes. Os testes existentes cobrem container maior que o grafo, extremos de pan/zoom, resize, roda, pinch e foco.
 
 ## 7. Pixel art e assets
 
@@ -260,20 +267,20 @@ Um placeholder deve seguir a mesma grade e paleta e ser declarado como provisór
 
 Reutilizar as dependências instaladas; não instalar toda a lista automaticamente.
 
-| Recurso                 | Papel nesta interface                                                                                       |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `@xyflow/react`         | Canvas, nós e arestas customizados, seleção e viewport do grafo                                             |
-| Tailwind CSS            | Layout, responsividade e aplicação dos tokens                                                               |
-| shadcn/ui + Radix       | Button, Badge, Breadcrumb, Tooltip, Separator, ScrollArea e Sheet, conforme disponíveis                     |
-| `lucide-react`          | Controles funcionais modernos, quando presente                                                              |
-| `pixelarticons`         | Símbolos em pixel SVG, com adaptação visual pelos tokens                                                    |
-| `zustand`               | Estado de interface compartilhado quando houver necessidade real; estado local simples pode continuar local |
-| `@tanstack/react-query` | Dados do servidor quando houver API; não duplicar esses dados em uma store de UI                            |
-| `motion`                | Transições discretas se já instalado; CSS é suficiente para efeitos simples                                 |
+| Recurso                     | Papel nesta interface                                                                                          |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `@xyflow/react`             | Canvas, nós e arestas customizados, seleção e viewport do grafo                                                |
+| Tailwind CSS                | Layout, responsividade e aplicação dos tokens                                                                  |
+| shadcn/ui + Radix           | Button, Badge, Breadcrumb, Tooltip, Separator, ScrollArea e Sheet, conforme disponíveis                        |
+| `lucide-react`              | Controles funcionais modernos, quando presente                                                                 |
+| Registro local de pixel art | `packages/ui/src/lib/pixel-assets.ts`, SVGs originais provisórios de 24 × 24; Pixelarticons não está instalado |
+| `zustand`                   | Estado de interface compartilhado quando houver necessidade real; estado local simples pode continuar local    |
+| `@tanstack/react-query`     | Dados do servidor quando houver API; não duplicar esses dados em uma store de UI                               |
+| `motion`                    | Transições discretas se já instalado; CSS é suficiente para efeitos simples                                    |
 
 Customizar React Flow para esta identidade, em vez de aceitar sua aparência padrão de editor técnico. Manter as atribuições exigidas pelas licenças. Definir manualmente o pequeno grafo inicial; algoritmos de layout automático podem ser avaliados posteriormente.
 
-Animações: aproximadamente 160–220 ms em hover, seleção e abertura do painel; respeitar `prefers-reduced-motion`. Não animar sprites com escalas fracionárias que borrem os pixels. O fundo astronômico permanece estático. Componentes de referência adicionais: ObservatoryBackdrop e MapControls, adaptados às convenções do projeto.
+Animações: aproximadamente 160–220 ms em hover, seleção e abertura do painel; respeitar `prefers-reduced-motion`. Não animar sprites com escalas fracionárias que borrem os pixels. O fundo astronômico claro permanece estático. Componentes de referência adicionais: ObservatoryBackdrop e MapControls, adaptados às convenções do projeto.
 
 ## 9. Continuidade para as próximas telas
 
@@ -283,21 +290,21 @@ Canvas ocupa o viewport útil abaixo do header, sem personagem ou painel lateral
 
 ### Personagem e inventário
 
-Manter a direção aprovada: personagem 2D em pixel art, slots de equipamento, inventário em grade e painel do item selecionado. Adaptar superfícies ao azul noturno, com um pedestal 2D simples e pequenos ornamentos. Roupas e acessórios são expressão/conquista; não concedem bônus artificiais de Conhecimento, Estratégia ou Criação. Essas categorias conservam suas cores também nessa tela. O Observatório não obriga redesenhar todas as roupas como trajes de mago.
+Manter a direção aprovada: personagem 2D em pixel art, slots de equipamento, inventário em grade e painel do item selecionado. Adaptar superfícies ao marfim e aos cards brancos, com um pedestal 2D simples e pequenos ornamentos em latão. Roupas e acessórios são expressão/conquista; não concedem bônus artificiais de Conhecimento, Estratégia ou Criação. Essas categorias conservam suas cores também nessa tela. O Observatório não obriga redesenhar todas as roupas como trajes de mago.
 
 ### Coerência de UI e UX nas demais telas
 
 Estas regras orientam trabalhos futuros; não exigem implementar todas as telas na tarefa de atualizar o mapa.
 
-| Tela              | Composição e UX                                                                                     | Ambientação                                                                                 |
-| ----------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Mapa global       | Destinos compactos com nome, marco em pixel e status; busca quando necessária                       | Mais presente nas margens; mundos podem remeter a constelações, sem virar grandes paisagens |
-| Skill/atividades  | Objetivo, desenvolvimento, requisitos e possibilidades abertas                                      | Categoria como acento; superfícies sólidas e pouco ornamento                                |
-| Aula              | Título educacional, conteúdo e exemplos em coluna confortável de leitura, cerca de 65–75 caracteres | Mínima; sem estrelas ou linhas atrás do texto                                               |
-| Exercício/editor  | Enunciado, código, saída e feedback real dominam a composição                                       | Fundo uniforme e sintaxe legível; detalhes fora da área de trabalho                         |
-| Projeto           | Objetivo real, requisitos, etapas, entregáveis e feedback                                           | Construção de software; recompensas ao redor da entrega, sem bosses                         |
-| Quests            | Objetivos, progresso e recompensas; acesso às skills; curadoria opcional                            | Diário de missões discreto, sem narrativa fictícia obrigatória                              |
-| Perfil/conquistas | Trajetória, categorias, títulos e origem das conquistas                                             | Acervo pessoal com pequenos emblemas e ornamentos                                           |
+| Tela              | Composição e UX                                                                                     | Ambientação                                                                                                               |
+| ----------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Mapa global       | Destinos compactos com nome, marco em pixel e status; busca quando necessária                       | Fundo marfim claro com marcas de orientação nas margens; mundos podem remeter a constelações, sem virar grandes paisagens |
+| Skill/atividades  | Objetivo, desenvolvimento, requisitos e possibilidades abertas                                      | Categoria como acento; superfícies sólidas e pouco ornamento                                                              |
+| Aula              | Título educacional, conteúdo e exemplos em coluna confortável de leitura, cerca de 65–75 caracteres | Mínima; sem estrelas ou linhas atrás do texto                                                                             |
+| Exercício/editor  | Enunciado, código, saída e feedback real dominam a composição                                       | Fundo uniforme e sintaxe legível; detalhes fora da área de trabalho                                                       |
+| Projeto           | Objetivo real, requisitos, etapas, entregáveis e feedback                                           | Construção de software; recompensas ao redor da entrega, sem bosses                                                       |
+| Quests            | Objetivos, progresso e recompensas; acesso às skills; curadoria opcional                            | Diário de missões discreto, sem narrativa fictícia obrigatória                                                            |
+| Perfil/conquistas | Trajetória, categorias, títulos e origem das conquistas                                             | Acervo pessoal com pequenos emblemas e ornamentos                                                                         |
 
 A ordem de atenção é tarefa/conteúdo → categorias/progresso → navegação → ambientação. Mesmos tokens, geometria, foco e estados em todas as telas. Breadcrumbs e ações de retorno preservam contexto; voltar de uma atividade não deve exigir passar pelo mapa global novamente.
 
@@ -319,7 +326,7 @@ Itens adquiridos mostram aquisição/equipamento; itens de conquista mostram ori
 - Layout utilizável no desktop e no celular; nomes legíveis, foco visível e controles acessíveis.
 - Sprites nítidos e UI sem pixelização global, emoji, cenário excessivo ou gradientes.
 - Tokens centralizados; componentes reaproveitáveis; domínio, progresso e layout separados.
-- Dark aplicado também a controles, overlays e painel; detalhes do fundo não interceptam ações.
+- Tema claro aplicado também a controles, overlays e painel; contraste dos textos e status verificado; detalhes do fundo não interceptam ações.
 - Limites reais e Centralizar impedem perder o mundo em vazio; painel/resize não causam saltos ou zoom oscilante.
 - Estudo e código têm superfícies uniformes, enquanto exploração e coleção recebem mais ambientação.
 
@@ -345,7 +352,7 @@ Preservar as instruções existentes e manter no AGENTS aplicável ao frontend u
 
 Antes de criar ou alterar telas, layouts, componentes visuais, estilos,
 ícones, assets ou interações, leia o design.md da raiz do repositório.
-O design system aprovado é Observatório. Siga seus tokens, cores das
+O design system aprovado é Observatório diurno (tema claro). Siga seus tokens, cores das
 categorias, regras de ambientação, acessibilidade e limites do canvas.
 
 Consulte o README para preservar as regras pedagógicas e de progressão.
@@ -353,15 +360,3 @@ Reutilize componentes e tokens existentes. Ao implementar uma nova
 decisão visual explicitamente aprovada, atualize o design.md junto com
 a mudança. Instruções textuais recentes prevalecem sobre sketches.
 ```
-
-## 13. Aplicação no mapa Inicial
-
-A referência canônica é `design.md` (minúsculas). O documento Observatório fornecido como `DESIGN.md` foi consolidado aqui. Os tokens ficam em `packages/ui/src/styles/globals.css`, incluindo o mapeamento Tailwind/shadcn e `color-scheme: dark`. O header, o painel, os portais Radix e o React Flow usam o mesmo tema. Ícones funcionais passam pelo componente `Icon` (Lucide); emblemas e moeda continuam no registro local `PixelIcon`, com assets originais provisórios.
-
-`ObservatoryBackdrop` desenha arcos, marcas e cantos em SVG/CSS estático, fora de `ViewportPortal`. Não recebe eventos, foco nem participa dos bounds. Regiões com seus headings permanecem dentro do portal do grafo.
-
-A câmera espera a medição dos nós controlados. `getNodesBounds` une essas medidas às regiões do layout; `getViewportForBounds` calcula o enquadramento útil. As margens de navegação são 32 px nas laterais, 24 px acima (80 px com navegação de categorias) e 80 px abaixo para os controles. São convertidas para coordenadas do mundo ao calcular `translateExtent`.
-
-O zoom mínimo acompanha a área útil: no desktop, parte da escala de enquadramento; em celular, da largura de uma região. O piso de 0,8 mantém nomes de 16 px com cerca de 13 px renderizados, e a vista inicial chega a 1 quando houver espaço. O zoom máximo considera um nó inteiro na área útil, até 2. Eixos menores que o viewport ficam deliberadamente centralizados. Resize e painel preservam a escala vigente quando ela está dentro dos novos limites, deslocando apenas o necessário para revelar a seleção. Roda comum não move o mapa; arraste, pinch e controles explícitos continuam disponíveis. Tab revela nós fora da vista e Enter/Espaço selecionam; Centralizar recupera a orientação.
-
-A implementação atual possui apenas o mundo Inicial e estado local, sem restauração persistente prévia. Voltar do diálogo de atividade mantém seleção e câmera. Ao integrar outros mundos ou uma store persistente, aplicar `constrainViewport` ao viewport restaurado e enquadrar somente na entrada de um mundo sem contexto. Não criar rotas ou persistência fictícias para demonstrar o tema.

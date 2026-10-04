@@ -413,7 +413,7 @@ Before completing changes, run `pnpm lint`, `pnpm typecheck`, `pnpm test` and `p
 
 Antes de criar ou alterar telas, layouts, componentes visuais, estilos,
 ícones, assets ou interações de interface, leia o `design.md` da raiz
-do repositório. O design system aprovado é Observatório. Siga seus tokens,
+do repositório. O design system atual é Observatório diurno (tema claro). Siga seus tokens,
 cores das categorias, ambientação, acessibilidade e limites do canvas.
 
 Consulte também o README para preservar as regras pedagógicas e de

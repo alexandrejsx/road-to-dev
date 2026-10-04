@@ -90,7 +90,7 @@ export function SkillEdge({
         stroke: data.color,
         strokeWidth: data.highlighted ? 2.5 : 1.7,
         strokeDasharray: data.fulfilled ? undefined : '5 6',
-        opacity: data.highlighted ? 1 : data.fulfilled ? 0.7 : 0.85,
+        opacity: data.highlighted || !data.fulfilled ? 1 : 0.85,
       }}
     />
   );

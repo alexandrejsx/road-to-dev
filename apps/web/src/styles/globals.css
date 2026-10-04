@@ -24,6 +24,7 @@
   width: fit-content;
   padding: 8px 0;
   font-size: 26px;
+  font-family: var(--rtd-font-editorial);
   font-weight: 750;
   letter-spacing: -1px;
   color: var(--rtd-text);
@@ -60,7 +61,7 @@
   right: 0;
   left: 0;
   height: 2px;
-  background: var(--rtd-gold-strong);
+  background: var(--rtd-gold);
 }
 
 .nav-link.unavailable {
@@ -151,6 +152,7 @@
   color: var(--category-color);
 }
 .category-heading h2 {
+  font-family: var(--rtd-font-editorial);
   font-size: 26px;
   font-weight: 650;
   line-height: 32px;
@@ -202,6 +204,7 @@
   flex-shrink: 0;
 }
 .skill-node-name {
+  font-family: var(--rtd-font-editorial);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,6 +240,9 @@
 }
 .skill-node[data-status='locked'] > svg {
   opacity: 0.7;
+}
+.skill-node[data-status='locked'] .skill-node-status {
+  color: var(--rtd-disabled);
 }
 .skill-node:hover {
   background: var(--rtd-surface-hover);
@@ -312,7 +318,8 @@
   border-top: 1px solid var(--rtd-border);
   border-left: 1px solid var(--rtd-border);
   border-top-left-radius: 16px;
-  background: var(--rtd-surface-elevated);
+  background: var(--rtd-surface);
+  box-shadow: var(--rtd-shadow);
   animation: rtd-panel-in 200ms var(--rtd-ease);
 }
 .skill-details {
@@ -348,7 +355,8 @@
   margin-bottom: 16px;
 }
 .detail-title {
-  color: var(--category-color);
+  color: var(--rtd-text);
+  font-family: var(--rtd-font-editorial);
   font-size: 25px;
   font-weight: 650;
   line-height: 32px;
@@ -675,24 +683,29 @@
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  color: var(--rtd-gold);
-  border: 1px solid color-mix(in srgb, var(--rtd-gold) 24%, transparent);
-  border-radius: 16px;
+  color: var(--rtd-gold-soft);
 }
 .observatory-backdrop > svg {
   position: absolute;
-  width: 300px;
-  height: 300px;
-  opacity: 0.22;
+  width: 400px;
+  height: 400px;
+  opacity: 0.55;
 }
 .observatory-backdrop .astrolabe-north {
-  top: -100px;
-  left: -100px;
+  top: -120px;
+  left: -200px;
 }
 .observatory-backdrop .astrolabe-south {
-  right: -100px;
-  bottom: -120px;
+  right: -200px;
+  bottom: -160px;
   rotate: 30deg;
+}
+.observatory-backdrop .observatory-constellation {
+  width: 104px;
+  height: 56px;
+  top: 16px;
+  right: 24px;
+  opacity: 0.45;
 }
 .observatory-corner {
   position: absolute;

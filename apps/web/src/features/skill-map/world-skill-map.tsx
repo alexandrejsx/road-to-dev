@@ -217,10 +217,11 @@ function SkillMapCanvas() {
         skill.prerequisites.map((requirement) => {
           const source = skills[requirement.skillId];
           const fulfilled = isFixtureRequirementMet(requirement, progress);
-          const highlighted = selectedId === skill.id;
+          const highlighted =
+            selectedId === skill.id || selectedId === source.id;
           const color =
             fulfilled || highlighted
-              ? `var(--rtd-${source.category}${highlighted ? '' : '-border'})`
+              ? `var(--rtd-${source.category})`
               : 'var(--rtd-edge-muted)';
           const route = crossCategoryRoutes[`${source.id}:${skill.id}`];
           return {
@@ -344,7 +345,7 @@ function SkillMapCanvas() {
             zoomOnPinch
             preventScrolling
             autoPanOnNodeFocus={false}
-            colorMode="dark"
+            colorMode="light"
             attributionPosition="bottom-right"
             aria-label="Mapa interativo de skills do mundo Inicial"
           >
